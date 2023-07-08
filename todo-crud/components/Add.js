@@ -1,11 +1,8 @@
-import Navbar from '@/components/Navbar'
 import React from 'react'
 
 const Add = () => {
   return (
-    <div>
-        <Navbar/>
-    </div>
+    <div className='dark:bg-black dark:text-white'>Add</div>
   )
 }
 
