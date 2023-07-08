@@ -11,11 +11,16 @@ import { useState } from 'react';
 
 export default function Home() {
   const [page, setPage] = useState('task');
+  const[ theme, setTheme ] = useState('dark');
 
+  const themedata=(data)=>{
+    // console.log(theme," form index");
+    setTheme(data);
+  }
   return (
-    <div>
-        <Navbar setPage={setPage}/>
-        {page=='task'?<Tasks/> :<Add/>}
+    <div className='dark:bg-black'>
+        <Navbar setPage={setPage} themedata={themedata}/>
+        {page=='task'?<Tasks /> :<Add theme={theme}/>}
         
     </div>
   )

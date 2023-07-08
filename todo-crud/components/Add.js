@@ -1,8 +1,12 @@
 import React from 'react'
+import FormF from './FormF'
 
-const Add = () => {
+const Add = (props) => {
+  // console.log(props.theme," from add");
   return (
-    <div className='dark:bg-black dark:text-white'>Add</div>
+    <div className='dark:bg-black dark:text-white'>
+      <FormF theme={props.theme}/>
+    </div>
   )
 }
 

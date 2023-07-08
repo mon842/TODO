@@ -11,8 +11,10 @@ const Navbar = ( props) => {
         return () => {
             if (window.matchMedia('prefers-color-scheme:dark').matches) {
                 setTheme('dark');
+                props.themedata(theme);
             } else {
                 setTheme('light');
+                props.themedata(theme);
             }
         }
     }, [])
@@ -22,6 +24,7 @@ const Navbar = ( props) => {
             if (theme == 'light') {
                 document.documentElement.classList.add('dark')
                 setTheme('dark');
+
             }
             else {
                 setTheme('light');
@@ -33,9 +36,11 @@ const Navbar = ( props) => {
     const handleTheme = () => {
         if (theme == 'light') {
             setTheme('dark');
+            props.themedata(theme);
         }
         else {
             setTheme('light');
+            props.themedata(theme);
         }
     };
 
