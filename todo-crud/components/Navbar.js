@@ -5,7 +5,7 @@ import LibraryAddRoundedIcon from '@mui/icons-material/LibraryAddRounded';
 // import Link from 'next/link';
 
 const Navbar = ( props) => {
-    const [theme, setTheme] = useState(null);
+    const [theme, setTheme] = useState('light');
 
     useEffect(() => {
         return () => {
