@@ -1,5 +1,5 @@
 import React from 'react'
-import FormF from './FormF'
+import FormF from './AddForm'
 
 const Add = (props) => {
   // console.log(props.theme," from add");

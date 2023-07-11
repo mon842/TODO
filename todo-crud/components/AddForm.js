@@ -7,7 +7,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Button, FormControl, FormControlLabel, FormLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField } from '@mui/material'
 import { useFormik } from 'formik'
-
+import { addTask } from '@/lib/helper';
 
 
 const initialValues = {
@@ -25,9 +25,11 @@ const validate = values => {
 }
 const onSubmit = async (values, onSubmitProps) => {
     console.log(values);
-    await new Promise((r) => setTimeout(r, 500));
-    alert(JSON.stringify(values, null, 2));
     onSubmitProps.resetForm();
+    await addTask(values);
+    // await new Promise((r) => setTimeout(r, 500));
+    // alert(JSON.stringify(values, null, 2));
+    
 }
 const defaultTheme = createTheme();
 const darkTheme = createTheme({
