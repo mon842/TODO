@@ -15,8 +15,14 @@ export const addTask = async (task) => {
     return await axios.post(`http://localhost:3000/api/tasks`, task);
 }
 
-export const deleteUser = async (id) => {
-    return await axios.delete(`${BaseUrl}/${id}`);
+export const deleteTask = async (id) => {
+    try {
+        return await axios.delete(`${BaseUrl}/api/tasks/${id}`);
+    } catch (error) {
+        console.log("Error while calling getuser api ",error);
+    }
+    
+
 }
 
 export const editUser = async (id, user) => {

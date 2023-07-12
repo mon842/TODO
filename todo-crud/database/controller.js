@@ -6,9 +6,9 @@ import Tasks from '../model/task'
 export async function getTasks(req, res){
     try {
         const tasks = await Tasks.find({})
-
-        if(!tasks) return res.status(404).json( { error: "Data not Found"})
         res.status(200).json(tasks)
+        if(!tasks) return res.status(404).json( { error: "Data not Found"})
+        
     } catch (error) {
         res.status(404).json( { error : "Error While Fetching Data"})
     }
@@ -28,19 +28,6 @@ export async function getUser(req, res){
         res.status(404).json({ error: "Cannot get the User...!"})
     }
 }
-
-// export const addUser=async (request, response) =>{
-//     const user = request.body;
-
-//     const newUser= User(user);
-
-//     try {
-//         await newUser.save();
-//         response.status(201).json(newUser);
-//     } catch (error) {
-//         response.status(409).json({message: error.message});
-//     }
-// }
 
 // post : http://localhost:3000/api/users
 export async function postTask(req, res){
@@ -77,13 +64,13 @@ export async function putUser(req, res){
 }
 
 // delete : http://localhost:3000/api/users/1
-export async function deleteUser(req, res){
+export async function deleteTask(req, res){
     try {
-        const { userId } = req.query;
+        const { taskId } = req.query;
 
-        if(userId){
-            const user = await Users.findByIdAndDelete(userId)
-            return res.status(200).json(user)
+        if(taskId){
+            const task = await Tasks.findByIdAndDelete(taskId)
+            return res.status(200).json(task)
         }
 
         res.status(404).json({ error: "User Not Selected...!"})

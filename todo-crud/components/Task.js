@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
-import { getTasks } from '@/lib/helper';
+import { getTasks,deleteTask } from '@/lib/helper';
 
 const Tasks = (props) => {
   // console.log(props.theme ,"from task");
@@ -15,10 +15,11 @@ const Tasks = (props) => {
         let response=await getTasks();
         setTasks(response.data);
     }
-    const deleteUserDetails= async (id)=>{
-        await deleteUser(id);
-        getAllUsers();
+    const deleteTaskDetails= async (id)=>{
+        await deleteTask(id);
+        getAllTasks();
     }
+
 
 
   return (
@@ -60,7 +61,7 @@ const Tasks = (props) => {
 
                   <td className="px-6 py-4">
                     <a href="#" className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    <a href="#" className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">doing</a>
+                    <a href="#" onClick={()=> deleteTaskDetails(task._id)} className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</a>
                   </td>
 
                 </tr>
