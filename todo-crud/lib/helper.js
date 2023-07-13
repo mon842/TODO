@@ -2,9 +2,10 @@ import axios from 'axios';
 const BaseUrl = 'http://localhost:3000';
 
 
-export const getTasks = async () => {
+export const getTasks = async (id) => {
+    id=id || '';
     try {
-        return await axios.get(`http://localhost:3000/api/tasks`);
+        return await axios.get(`http://localhost:3000/api/tasks/${id}`);
     } catch (error) {
         console.log("Error while calling getuser api ",error);
     }
@@ -25,6 +26,10 @@ export const deleteTask = async (id) => {
 
 }
 
-export const editUser = async (id, user) => {
-    return await axios.put(`${BaseUrl}/${id}`, user)
+export const editTask = async (id, task) => {
+    try {
+        return await axios.put(`${BaseUrl}/api/tasks/${id}`, task)
+    } catch (error) {
+        console.log("Error while calling getuser api ",error);
+    }
 }

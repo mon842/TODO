@@ -73,15 +73,6 @@ const Navbar = ( props) => {
                     />}
 
             </button>
-            {/* <Link className='text-bold' href={"/add"} onClick={handleClickAdd}>
-                <LibraryAddRoundedIcon className='dark:text-white' fontSize="large" />
-            </Link>
-
-            <p className='text-2xl dark:text-white font-mono font-bold' >
-                <Link href={"/"} onClick={handleClickTask}>
-                    tasks
-                </Link>
-            </p> */}
 
             <button>
                 <LibraryAddRoundedIcon className='dark:text-white' fontSize="large"  onClick={()=>props.setPage('add')}/>

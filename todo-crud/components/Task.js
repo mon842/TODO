@@ -19,7 +19,10 @@ const Tasks = (props) => {
         await deleteTask(id);
         getAllTasks();
     }
-
+    const editTaskDetails= async(id)=>{
+        props.setId(id);
+        props.setPage('edit');
+    }
 
 
   return (
@@ -60,7 +63,7 @@ const Tasks = (props) => {
                   </td>
 
                   <td className="px-6 py-4">
-                    <a href="#" className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <a href={`#`} onClick={()=> editTaskDetails(task._id)} className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     <a href="#" onClick={()=> deleteTaskDetails(task._id)} className="mx-1 font-medium text-blue-600 dark:text-blue-500 hover:underline">delete</a>
                   </td>
 

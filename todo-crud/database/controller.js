@@ -15,13 +15,13 @@ export async function getTasks(req, res){
 }
 
 // get : http://localhost:3000/api/users/1
-export async function getUser(req, res){
+export async function getTask(req, res){
     try {
-        const { userId } = req.query;
+        const { taskId } = req.query;
 
-        if(userId){
-            const user = await Users.findById(userId);
-            res.status(200).json(user)
+        if(taskId){
+            const task = await Tasks.findById(taskId);
+            res.status(200).json(task)
         }
         res.status(404).json({ error : "User not Selected...!"});
     } catch (error) {
@@ -39,23 +39,20 @@ export async function postTask(req, res){
         const newTask= Tasks(formData);   
         await newTask.save();
         response.status(201).json(newTask); 
-        // Tasks.create( formData, function(err, data){
-        //     return res.status(200).json(data)
-        // })
     } catch (error) {
         return res.status(404).json({ error })
     }
 }
 
 // put : http://localhost:3000/api/users/1
-export async function putUser(req, res){
+export async function putTask(req, res){
     try {
-        const { userId } = req.query;
+        const { taskId } = req.query;
         const formData = req.body;
 
-        if(userId && formData){
-            const user = await Users.findByIdAndUpdate(userId, formData);
-            res.status(200).json(user)
+        if(taskId && formData){
+            const task = await Tasks.findByIdAndUpdate(taskId, formData);
+            res.status(200).json(task);
         }
         res.status(404).json( { error: "User Not Selected...!"})
     } catch (error) {

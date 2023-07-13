@@ -1,5 +1,5 @@
 import connectMongo from '../../../database/conn'
-import { getTasks, postTask, putUser, deleteTask } from '../../../database/controller';
+import { getTasks, postTask,  deleteTask, putTask } from '../../../database/controller';
 
 export default async function handler(req, res) {
     connectMongo().catch(() => res.status(405).json({ error: "Error in the Connection"}))
@@ -15,7 +15,7 @@ export default async function handler(req, res) {
             postTask(req, res)
             break;
         case 'PUT':
-            putUser(req, res)
+            putTask(req, res)
             break;
         case 'DELETE':
             deleteTask(req, res)
