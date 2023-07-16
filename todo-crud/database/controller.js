@@ -49,7 +49,7 @@ export async function putTask(req, res){
     try {
         const { taskId } = req.query;
         const formData = req.body;
-
+        console.log(formData);
         if(taskId && formData){
             const task = await Tasks.findByIdAndUpdate(taskId, formData);
             res.status(200).json(task);

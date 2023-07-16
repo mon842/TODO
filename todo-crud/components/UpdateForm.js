@@ -33,16 +33,12 @@ const darkTheme = createTheme({
   });
 
 export default function UpdateForm(props) {
-    const onSubmit = async (values, onSubmitProps) => {
-    console.log(values);
-    const response = await editTask(id, values);
-    
+    const onSubmit = async (values, e) => {
+        console.log(values);
+        await editTask(id, values);
+        e.preventDefault();
     }
-    // const formik = useFormik({
-    //     initialValues,
-    //     onSubmit,
-    //     validate,
-    // });
+
     const col=props.theme=='dark'?defaultTheme :darkTheme;
 
 
@@ -63,13 +59,15 @@ export default function UpdateForm(props) {
         setTask(response.data);
     }
 
-    const editTaskDetails = async() => {
-        const response = await editTask(id, task);
+    const editTaskDetails = async(e) => {
+        console.log(task);
+        e.preventDefault();
+        // const response = await editTask(id, task);
         // navigate('/all');
     }
 
     const onValueChange = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setTask({...task, [e.target.name]: e.target.value})
     }
 
@@ -139,7 +137,7 @@ export default function UpdateForm(props) {
                         <Button className='dark:text-white' sx={{
                             marginTop: 2,
                             mb: 5
-                        }} fullWidth variant="outlined" type='submit' onClick={() => editTaskDetails()}>
+                        }} fullWidth variant="outlined" type='submit' onClick={async() =>await editTask(id, task)}>
                             Submit
                         </Button> 
                         

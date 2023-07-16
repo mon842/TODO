@@ -28,6 +28,7 @@ export const deleteTask = async (id) => {
 
 export const editTask = async (id, task) => {
     try {
+        
         return await axios.put(`${BaseUrl}/api/tasks/${id}`, task)
     } catch (error) {
         console.log("Error while calling getuser api ",error);
